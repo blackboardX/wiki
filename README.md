@@ -35,12 +35,33 @@ GET запросы
 Формат возвращаемого json:
 
     {
-      decompositions: [{rootId: skillName}...]
+      'decompositions': [{rootId: skillName}...]
     }
         
 Значения:
 
     decompositions - список корневых скиллов в виде пар {skillId, skillName} (Pair<int, String>[])
+    
+/getNotes(skillId)
+------------------
+
+Параметры:
+    
+    skillId - id скилла
+
+Формат возвращаемого json:
+
+    {
+      'notes': [{'noteId': noteId, 'data': data, 'count': count, 'time': time}...]
+    }
+    
+Значения:
+
+    notes - список объектов заметок (List<Note>)
+    noteId - id заметки (int)
+    data - дата создания заметки (хер знает)
+    count - количество задач (int)
+    time - время, затраченное на решение задач (хер знает)
   
 /getSkill(skillId)\*
 ------------------
@@ -80,17 +101,79 @@ GET запросы
 POST запросы
 ============
     
-/insertSkill(afterSkillId, name)
+/insertSkill(parentId, skillName)
 ------------------
 
 Параметры:
 
-    afterSkillId - id родителя нового скилла 
+    parentId - id родителя нового скилла (int)
+    skillName - имя скилла (String)
     
-Формат возвращаемого json:
+Описание:
 
-    {
-      'skillId': skillId,
-      'adjacencyList': [{parentId: childId}...],
-      'name': name
-    }
+    добавляет новый скилл с именем skillName и родителем parentId
+
+/updateSkill(skillName, skillId)
+------------------
+
+Параметры:
+
+    skillName - новое имя скилла (String)
+    skillId - id обновляемого скилла (int)
+    
+/deleteSkill(skillId)
+------------------
+
+Параметры:
+
+    skillId - id удаляемого скилла
+    
+Описание:
+
+    обновляет скилл с идентификатором skillId
+    
+/addNote(skillId, count, time, date)
+------------------------------------
+
+Параметры:
+
+    skillId - id скилла, которому добавляется новая заметка
+    data - дата создания заметки (хер знает)
+    count - количество задач (int)
+    time - время, затраченное на решение задач (хер знает)
+
+Описание:
+
+    добавляет новую заметку скиллу с идентификатором skillId
+    
+/deleteNote(noteId)
+-------------------
+
+Параметры:
+
+    noteId - id удаляемой заметки (int)
+    
+Описание:
+
+    удаляет заметку с идентификатором noteId
+    
+/updateNote(noteId, time, count)
+------------------------------------
+
+Параметры:
+
+    noteId - id изменяемой заметки (int)
+    time - новое время
+    count - количество решенных (int)
+    
+Описание:
+
+    обновляет заметку с идентификатором noteId
+    
+/copyDecompositionFrom(skillId)
+-------------------------------
+
+Параметры:
+
+    skillId - id корневого скилла
+    
