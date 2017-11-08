@@ -121,6 +121,10 @@ POST запросы
     skillName - новое имя скилла (String)
     skillId - id обновляемого скилла (int)
     
+Описание:
+
+    обновляет скилл с идентификатором skillId
+    
 /deleteSkill(skillId)
 ------------------
 
