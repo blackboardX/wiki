@@ -19,7 +19,7 @@ GET запросы
 
     {
       'rootId': rootId,
-      'adjacencyList': [{parentId: childId}...],
+      'adjacencyList': [{parentId: childId, 'childName': childName}...],
       'skillName': skillName
     }
         
@@ -28,6 +28,7 @@ GET запросы
     rootId - id корневого скилла (int)
     adjacencyList - список смежности (Pair<int, int>[])
     skillName - имя скилла (String)
+    childName - имя класса-потомка
     
 /getDecompositions()
 --------------------------
