@@ -19,7 +19,7 @@ GET запросы
 
     {
       'rootId': rootId,
-      'adjacencyList': [{parentId: childId, 'childName': childName}...],
+      'adjacencyList': [{parentId: [{'childId': childId, 'childName': childName}...]}...],
       'skillName': skillName
     }
         
